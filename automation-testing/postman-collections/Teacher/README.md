@@ -19,7 +19,7 @@ This collection automates CRUD operations for managing teachers in the School Ma
 ### 1. **Create Teacher**
 
 - **Method**: `POST`
-- **Endpoint**: `{{baseURL}}{{TeacherEndpoint}}`
+- **Endpoint**: `{{BaseURL}}{{TeacherEndpoint}}`
 - **Headers**:
   - `Content-Type`: `application/json`
 - **Body**:
@@ -41,7 +41,7 @@ This collection automates CRUD operations for managing teachers in the School Ma
 ### 2. **Get All Teachers**
 
 - **Method**: `GET`
-- **Endpoint**: `{{baseURL}}{{TeacherEndpoint}}`
+- **Endpoint**: `{{BaseURL}}{{TeacherEndpoint}}`
 - **Test Scripts**:
   - Validate status code is `200`.
   - Validate the response is an array of teacher objects.
@@ -51,7 +51,7 @@ This collection automates CRUD operations for managing teachers in the School Ma
 ### 3. **Get Teacher by ID**
 
 - **Method**: `GET`
-- **Endpoint**: `{{baseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
+- **Endpoint**: `{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
 - **Test Scripts**:
   - Validate status code is `200`.
   - Validate the response contains the teacher’s details.
@@ -61,7 +61,7 @@ This collection automates CRUD operations for managing teachers in the School Ma
 ### 4. **Update Teacher**
 
 - **Method**: `PUT`
-- **Endpoint**: `{{baseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
+- **Endpoint**: `{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
 - **Body**:
   ```json
   {
@@ -80,7 +80,7 @@ This collection automates CRUD operations for managing teachers in the School Ma
 ### 5. **Delete Teacher**
 
 - **Method**: `DELETE`
-- **Endpoint**: `{{baseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
+- **Endpoint**: `{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}`
 - **Test Scripts**:
   - Validate status code is `204`.
 
