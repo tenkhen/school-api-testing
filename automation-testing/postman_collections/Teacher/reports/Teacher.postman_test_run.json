@@ -1,0 +1,201 @@
+{
+	"id": "a327158b-db81-4453-932e-e336c3dfe324",
+	"name": "Teacher",
+	"timestamp": "2025-01-20T01:07:16.908Z",
+	"collection_id": "28757998-c6d9a2e8-f4f2-497a-a28d-a13bd4ef9051",
+	"folder_id": 0,
+	"environment_id": "28757998-08bd1d24-a914-4800-a339-a6c66ea57148",
+	"totalPass": 9,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-20T01:07:14.406Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2dc7ee4a-dd7c-4d14-a5d8-6d35fef5ef89",
+			"name": "Create Teacher",
+			"url": "https://school-api-production-e363.up.railway.app/api/teachers",
+			"time": 513,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response contains ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				513
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response contains ID": true
+				}
+			]
+		},
+		{
+			"id": "9f6ecd72-d7ab-47c5-ae86-8b57371169cc",
+			"name": "Get All Teachers",
+			"url": "https://school-api-production-e363.up.railway.app/api/teachers",
+			"time": 324,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response is an array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is an array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				324
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response is an array": true
+				}
+			]
+		},
+		{
+			"id": "6766c8c4-cf2f-4a6f-a843-2dd48fc558c8",
+			"name": "Get a Teacher",
+			"url": "https://school-api-production-e363.up.railway.app/api/teachers/21",
+			"time": 326,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains teacher details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains teacher details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				326
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains teacher details": true
+				}
+			]
+		},
+		{
+			"id": "b4334239-b59f-4614-a6b5-bae1dac32629",
+			"name": "Update Teacher",
+			"url": "https://school-api-production-e363.up.railway.app/api/teachers/21",
+			"time": 480,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains updated details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains updated details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				480
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains updated details": true
+				}
+			]
+		},
+		{
+			"id": "31b196bd-dcc6-49c8-9c6b-1bde401a5bca",
+			"name": "Delete Teacher",
+			"url": "https://school-api-production-e363.up.railway.app/api/teachers/21",
+			"time": 585,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				585
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2228,
+	"collection": {
+		"requests": [
+			{
+				"id": "2dc7ee4a-dd7c-4d14-a5d8-6d35fef5ef89",
+				"method": "POST"
+			},
+			{
+				"id": "9f6ecd72-d7ab-47c5-ae86-8b57371169cc",
+				"method": "GET"
+			},
+			{
+				"id": "6766c8c4-cf2f-4a6f-a843-2dd48fc558c8",
+				"method": "GET"
+			},
+			{
+				"id": "b4334239-b59f-4614-a6b5-bae1dac32629",
+				"method": "PUT"
+			},
+			{
+				"id": "31b196bd-dcc6-49c8-9c6b-1bde401a5bca",
+				"method": "DELETE"
+			}
+		]
+	}
+}

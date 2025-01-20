@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "babc47a1-cdd9-4909-ae03-d3a71cbc1a04",
+		"name": "Student",
+		"description": "**Purpose**: Includes APIs for managing student data, including pagination and search.\n\n**Endpoints Included**:\n\n- Create a student, get all students, paginate results, search by first name, update, and delete students.\n    \n\n**Environment Variables**:\n\n- {{BaseURL}}, {{StudentEndpoint}}, {{StudentID}}.\n    \n\n**Additional Notes**:\n\n- Test pagination with varying page and size values.\n    \n- Ensure no duplicate student records are created.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Create Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains ID\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"});",
+							"",
+							"pm.globals.set(\"StudentID\", jsonData.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Khenrab\",\n    \"lastName\": \"Lama\",\n    \"email\": \"khenrab@khenrab.io\",\n    \"dateOfBirth\": \"2000-11-24\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response is an array\", () => {",
+							"    if(jsonData.length > 0) {",
+							"        pm.expect(jsonData[0]).to.have.property(\"id\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"firstName\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"lastName\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"email\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"dateOfBirth\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students with Pagination",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains students\", () => {",
+							"    if(jsonData.length > 0) {",
+							"        pm.expect(jsonData.content[0]).to.have.property(\"id\");",
+							"        pm.expect(jsonData.content[0]).to.have.property(\"firstName\");",
+							"        pm.expect(jsonData.content[0]).to.have.property(\"lastName\");",
+							"        pm.expect(jsonData.content[0]).to.have.property(\"email\");",
+							"        pm.expect(jsonData.content[0]).to.have.property(\"dateOfBirth\");",
+							"    }",
+							"});",
+							"",
+							"const pageNumber = parseInt(pm.globals.get(\"PageNumber\"));",
+							"const pageSize = parseInt(pm.globals.get(\"PageSize\"));",
+							"",
+							"pm.test(\"Response body pageNumber should match: \" + pageNumber,  () => {",
+							"    pm.expect(jsonData.pageNumber).to.eql(pageNumber);",
+							"});",
+							"",
+							"pm.test(\"Response body pageSize should match: \" + pageSize, () => {",
+							"    pm.expect(jsonData.pageSize).to.eql(pageSize);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/page?page={{PageNumber}}&size={{PageSize}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"page"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "{{PageNumber}}",
+							"description": "Page number (index at 0)"
+						},
+						{
+							"key": "size",
+							"value": "{{PageSize}}",
+							"description": "Page size (number of elements on a page)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students by First Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"First name should match as searched name\", () => {",
+							"    if(jsonData.length > 0) {",
+							"        pm.expect(jsonData[0].firstName).to.eql(\"Michael\");",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/search?name=Michael",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Michael",
+							"description": "Michael"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains student details\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"    pm.expect(jsonData).to.have.property(\"firstName\");",
+							"    pm.expect(jsonData).to.have.property(\"lastName\");",
+							"    pm.expect(jsonData).to.have.property(\"email\");",
+							"    pm.expect(jsonData).to.have.property(\"dateOfBirth\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains updated details\", () => {",
+							"    pm.expect(jsonData.firstName).to.eql(\"Tenzin\");",
+							"    pm.expect(jsonData.lastName).to.eql(\"Jampa\");",
+							"    pm.expect(jsonData.email).to.eql(\"tenzin.jampa@tenjam.io\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Tenzin\",\n    \"lastName\": \"Jampa\",\n    \"email\": \"tenzin.jampa@tenjam.io\",\n    \"dateOfBirth\": \"1990-01-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "c6d9a2e8-f4f2-497a-a28d-a13bd4ef9051",
+		"name": "Teacher",
+		"description": "**Purpose**: Contains CRUD operations for managing teacher data in the School Management System.\n\n**Endpoints Included**:\n\n- Create a teacher, get all teachers, get teacher with id, update and delete teachers.\n    \n\n**Environment Variables**:\n\n- {{BaseURL}}: The base URL of the API.\n    \n- {{TeacherEndpoint}}: Endpoint for teacher operations.\n    \n- {{TeacherID}}: ID of the teacher for specific operations.\n    \n\n**Testing Scope**:\n\n- Positive and negative test cases for all CRUD operations.\n    \n- Validation of response status codes and data structures.\n    \n\n**Additional Notes**:\n\n- Ensure the teacher’s email is unique.\n    \n- Validate proper error handling for invalid TeacherID.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Create Teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains ID\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"});",
+							"",
+							"pm.environment.set(\"TeacherID\", jsonData.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Khenrab\",\n    \"lastName\": \"Lama\",\n    \"email\": \"khenrabdorjee.lama@gmail.com\",\n    \"specialization\": \"Java Programming\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Teachers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"} );",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response is an array\", () => {",
+							"    if(jsonData.length > 0) {",
+							"        pm.expect(jsonData[0]).to.have.property(\"id\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"firstName\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"lastName\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"email\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"specialization\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains teacher details\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"    pm.expect(jsonData).to.have.property(\"firstName\");",
+							"    pm.expect(jsonData).to.have.property(\"lastName\");",
+							"    pm.expect(jsonData).to.have.property(\"email\");",
+							"    pm.expect(jsonData).to.have.property(\"specialization\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains updated details\", () => {",
+							"    pm.expect(jsonData.firstName).to.eql(\"Tenzin\");",
+							"    pm.expect(jsonData.lastName).to.eql(\"Jampa\");",
+							"    pm.expect(jsonData.email).to.eql(\"jampa@example.com\");",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Tenzin\",\n    \"lastName\": \"Jampa\",\n    \"email\": \"jampa@example.com\",\n    \"specialization\": \"Java Expert\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

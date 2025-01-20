@@ -1,0 +1,287 @@
+{
+	"id": "77f7b86d-d651-458d-81f2-eb2d924daa0e",
+	"name": "Student",
+	"timestamp": "2025-01-20T03:44:39.353Z",
+	"collection_id": "28757998-babc47a1-cdd9-4909-ae03-d3a71cbc1a04",
+	"folder_id": 0,
+	"environment_id": "28757998-08bd1d24-a914-4800-a339-a6c66ea57148",
+	"totalPass": 15,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-20T03:44:36.366Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "6ea34f20-ece6-405c-bc4b-90d24e155087",
+			"name": "Create Student",
+			"url": "https://school-api-production-e363.up.railway.app/api/students",
+			"time": 309,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response contains ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				309
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response contains ID": true
+				}
+			]
+		},
+		{
+			"id": "033d9cd4-990f-48d1-af08-5a3dcc57d111",
+			"name": "Get All Students",
+			"url": "https://school-api-production-e363.up.railway.app/api/students",
+			"time": 347,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response is an array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is an array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				347
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response is an array": true
+				}
+			]
+		},
+		{
+			"id": "bc704fc4-a0e1-4874-863e-6858d95ef2c9",
+			"name": "Get Students with Pagination",
+			"url": "https://school-api-production-e363.up.railway.app/api/students/page?page=2&size=5",
+			"time": 380,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains students": true,
+				"Response body pageNumber should match: 2": true,
+				"Response body pageSize should match: 5": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains students": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body pageNumber should match: 2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body pageSize should match: 5": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				380
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains students": true,
+					"Response body pageNumber should match: 2": true,
+					"Response body pageSize should match: 5": true
+				}
+			]
+		},
+		{
+			"id": "c9f667b4-6a79-4c8b-a734-49a586f85de9",
+			"name": "Get Students by First Name",
+			"url": "https://school-api-production-e363.up.railway.app/api/students/search?name=Michael",
+			"time": 144,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"First name should match as searched name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"First name should match as searched name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				144
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"First name should match as searched name": true
+				}
+			]
+		},
+		{
+			"id": "5501e01c-7e4a-4195-9a8c-cc2f5c322a88",
+			"name": "Get a Student",
+			"url": "https://school-api-production-e363.up.railway.app/api/students/58",
+			"time": 402,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains student details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains student details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				402
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains student details": true
+				}
+			]
+		},
+		{
+			"id": "3dd9928a-a1f4-4cbd-a6d2-ff9420a2570c",
+			"name": "Update Student",
+			"url": "https://school-api-production-e363.up.railway.app/api/students/58",
+			"time": 610,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains updated details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains updated details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				610
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains updated details": true
+				}
+			]
+		},
+		{
+			"id": "62333529-5ee2-4484-809b-f4a89b4671d9",
+			"name": "Delete Student",
+			"url": "https://school-api-production-e363.up.railway.app/api/students/58",
+			"time": 500,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				500
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2692,
+	"collection": {
+		"requests": [
+			{
+				"id": "6ea34f20-ece6-405c-bc4b-90d24e155087",
+				"method": "POST"
+			},
+			{
+				"id": "033d9cd4-990f-48d1-af08-5a3dcc57d111",
+				"method": "GET"
+			},
+			{
+				"id": "bc704fc4-a0e1-4874-863e-6858d95ef2c9",
+				"method": "GET"
+			},
+			{
+				"id": "c9f667b4-6a79-4c8b-a734-49a586f85de9",
+				"method": "GET"
+			},
+			{
+				"id": "5501e01c-7e4a-4195-9a8c-cc2f5c322a88",
+				"method": "GET"
+			},
+			{
+				"id": "3dd9928a-a1f4-4cbd-a6d2-ff9420a2570c",
+				"method": "PUT"
+			},
+			{
+				"id": "62333529-5ee2-4484-809b-f4a89b4671d9",
+				"method": "DELETE"
+			}
+		]
+	}
+}

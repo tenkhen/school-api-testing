@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "c6d9a2e8-f4f2-497a-a28d-a13bd4ef9051",
+		"name": "Teacher",
+		"description": "**Purpose**: Contains CRUD operations for managing teacher data in the School Management System.\n\n**Endpoints Included**:\n\n- Create a teacher, get all teachers, get teacher with id, update and delete teachers.\n    \n\n**Environment Variables**:\n\n- {{BaseURL}}: The base URL of the API.\n    \n- {{TeacherEndpoint}}: Endpoint for teacher operations.\n    \n- {{TeacherID}}: ID of the teacher for specific operations.\n    \n\n**Testing Scope**:\n\n- Positive and negative test cases for all CRUD operations.\n    \n- Validation of response status codes and data structures.\n    \n\n**Additional Notes**:\n\n- Ensure the teacher’s email is unique.\n    \n- Validate proper error handling for invalid TeacherID.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Create Teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Khenrab\",\n    \"lastName\": \"Lama\",\n    \"email\": \"khenrabdorjee.lama@gmail.com\",\n    \"specialization\": \"Java Programming\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Teachers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Teacher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Teacher",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Khenrab\",\n    \"lastName\": \"Lama\",\n    \"email\": \"khenrab@khenrab.io\",\n    \"specialization\": \"Java Expert\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Teacher",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{TeacherEndpoint}}/{{TeacherID}}",
+					"host": [
+						"{{BaseURL}}{{TeacherEndpoint}}"
+					],
+					"path": [
+						"{{TeacherID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

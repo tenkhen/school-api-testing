@@ -1,0 +1,87 @@
+{
+	"id": "dd0802c3-be4c-47d8-8345-acf3c0d5639f",
+	"values": [
+		{
+			"key": "ClassID",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ClassRoom",
+			"value": "Lab 201",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "TeacherID",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "StudentID",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "CourseID",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "EnrollmentID",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "PageNumber",
+			"value": "4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "PageSize",
+			"value": "10",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "StudentEndpoint",
+			"value": "/api/students",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "TeacherEndpoint",
+			"value": "/api/teachers",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "EnrollmentEndpoint",
+			"value": "/api/enrollments",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "CourseEndpoint",
+			"value": "/api/courses",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ClassEndpoint",
+			"value": "/api/classes",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-01-18T01:45:08.072Z",
+	"_postman_exported_using": "Postman/11.28.4"
+}

@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "babc47a1-cdd9-4909-ae03-d3a71cbc1a04",
+		"name": "Student",
+		"description": "**Purpose**: Includes APIs for managing student data, including pagination and search.\n\n**Endpoints Included**:\n\n- Create a student, get all students, paginate results, search by first name, update, and delete students.\n    \n\n**Environment Variables**:\n\n- {{BaseURL}}, {{StudentEndpoint}}, {{StudentID}}.\n    \n\n**Additional Notes**:\n\n- Test pagination with varying page and size values.\n    \n- Ensure no duplicate student records are created.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Khenrab\",\n    \"lastName\": \"Lama\",\n    \"email\": \"khenrab@khenrab.io\",\n    \"dateOfBirth\": \"2000-11-24\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students with Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/page?page={{PageNumber}}&size={{PageSize}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"page"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "{{PageNumber}}",
+							"description": "Page number (index at 0)"
+						},
+						{
+							"key": "size",
+							"value": "{{PageSize}}",
+							"description": "Page size (number of elements on a page)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students by First Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/search?name=Michael",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Michael"
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Tenzin\",\n    \"lastName\": \"Jampa\",\n    \"email\": \"tenzin.jampa@tenjam.io\",\n    \"dateOfBirth\": \"1990-01-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{StudentEndpoint}}/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{StudentEndpoint}}"
+					],
+					"path": [
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

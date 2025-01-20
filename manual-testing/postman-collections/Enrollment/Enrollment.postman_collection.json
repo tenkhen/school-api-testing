@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "9a690915-3676-4aa6-9019-d9f7a0453561",
+		"name": "Enrollment",
+		"description": "**Purpose**: Manage student-course enrollments.\n\n**Endpoints Included**:\n\n- Enroll a student in a course, fetch all enrollments, retrieve enrollments by student or course, and delete enrollments.\n\n**Environment Variables**:\n\n- {{EnrollmentEndpoint}}, {{StudentID}}, {{CourseID}}, {{EnrollmentID}}.\n\n**Additional Notes**:\n\n- Validate studentId and courseId refer to existing entities.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Enroll Student in Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"studentId\": \"{{StudentID}}\",\n    \"courseId\": \"{{CourseID}}\",\n    \"enrollmentDate\": \"2025-06-30T09:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{EnrollmentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{EnrollmentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Enrollments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{EnrollmentEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{EnrollmentEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Enrollments by Student Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{EnrollmentEndpoint}}/student/{{StudentID}}",
+					"host": [
+						"{{BaseURL}}{{EnrollmentEndpoint}}"
+					],
+					"path": [
+						"student",
+						"{{StudentID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Enrollments by Course Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{EnrollmentEndpoint}}/course/{{CourseID}}",
+					"host": [
+						"{{BaseURL}}{{EnrollmentEndpoint}}"
+					],
+					"path": [
+						"course",
+						"{{CourseID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Enrollment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{EnrollmentEndpoint}}/{{EnrollmentID}}",
+					"host": [
+						"{{BaseURL}}{{EnrollmentEndpoint}}"
+					],
+					"path": [
+						"{{EnrollmentID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
