@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "6e027efe-fafb-4e09-bcef-2e348b5f735c",
+		"name": "Class",
+		"description": "**Purpose**: Manage class schedules and room assignments.\n\n**Endpoints Included**:\n\n- Create, retrieve, update, and delete classes.\n    \n\n**Environment Variables**:\n\n- {{ClassEndpoint}}, {{ClassID}}, {{CourseID}}, {{ClassRoom}}.\n    \n\n**Additional Notes**:\n\n- Test overlapping schedules and room assignments.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757998"
+	},
+	"item": [
+		{
+			"name": "Create Class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.globals.set(\"ClassID\", jsonData.id);",
+							"",
+							"pm.test(\"Response contains newly created class details\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"    pm.expect(jsonData).to.have.property(\"courseId\");",
+							"    pm.expect(jsonData).to.have.property(\"room\");",
+							"    pm.expect(jsonData).to.have.property(\"schedule\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"courseId\": \"{{CourseID}}\",\n    \"room\": \"{{ClassRoom}}\",\n    \"schedule\": \"2024-12-30T09:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{ClassEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{ClassEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Classes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains an array of all classes with details\", () => {",
+							"    if(jsonData.length > 0) {",
+							"        pm.expect(jsonData[0]).to.have.property(\"id\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"courseId\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"room\");",
+							"        pm.expect(jsonData[0]).to.have.property(\"schedule\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{ClassEndpoint}}",
+					"host": [
+						"{{BaseURL}}{{ClassEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains class details\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"    pm.expect(jsonData).to.have.property(\"courseId\");",
+							"    pm.expect(jsonData).to.have.property(\"room\");",
+							"    pm.expect(jsonData).to.have.property(\"schedule\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{ClassEndpoint}}/{{ClassID}}",
+					"host": [
+						"{{BaseURL}}{{ClassEndpoint}}"
+					],
+					"path": [
+						"{{ClassID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response contains updated class details\", () => {",
+							"    pm.expect(jsonData).to.have.property(\"id\");",
+							"    pm.expect(jsonData).to.have.property(\"courseId\");",
+							"    pm.expect(jsonData).to.have.property(\"room\");",
+							"    pm.expect(jsonData).to.have.property(\"schedule\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"courseId\": \"{{CourseID}}\",\n    \"room\": \"Lab 401\",\n    \"schedule\": \"2025-02-15T09:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}{{ClassEndpoint}}/{{ClassID}}",
+					"host": [
+						"{{BaseURL}}{{ClassEndpoint}}"
+					],
+					"path": [
+						"{{ClassID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}{{ClassEndpoint}}/{{ClassID}}",
+					"host": [
+						"{{BaseURL}}{{ClassEndpoint}}"
+					],
+					"path": [
+						"{{ClassID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

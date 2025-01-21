@@ -1,0 +1,201 @@
+{
+	"id": "629afea1-5a37-4eef-af45-32a89011b21e",
+	"name": "Enrollment",
+	"timestamp": "2025-01-21T00:29:06.600Z",
+	"collection_id": "28757998-9a690915-3676-4aa6-9019-d9f7a0453561",
+	"folder_id": 0,
+	"environment_id": "28757998-08bd1d24-a914-4800-a339-a6c66ea57148",
+	"totalPass": 9,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-21T00:29:01.674Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e94d9ea2-3427-453c-91d2-5d08d4719301",
+			"name": "Enroll Student in Course",
+			"url": "https://school-api-production-e363.up.railway.app/api/enrollments",
+			"time": 1163,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response contains enrollment details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains enrollment details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1163
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response contains enrollment details": true
+				}
+			]
+		},
+		{
+			"id": "0081ee34-4836-4f0d-b7ce-3974bdc56c93",
+			"name": "Get All Enrollments",
+			"url": "https://school-api-production-e363.up.railway.app/api/enrollments",
+			"time": 970,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains an array of all enrollments": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains an array of all enrollments": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				970
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains an array of all enrollments": true
+				}
+			]
+		},
+		{
+			"id": "48d096aa-2a08-4c31-973b-8ef262ec9add",
+			"name": "Get Enrollments by Student Id",
+			"url": "https://school-api-production-e363.up.railway.app/api/enrollments/student/1",
+			"time": 1006,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains an array of all enrollments based on specific student ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains an array of all enrollments based on specific student ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1006
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains an array of all enrollments based on specific student ID": true
+				}
+			]
+		},
+		{
+			"id": "89f0eb1e-04be-4d72-968f-ed060575bfdf",
+			"name": "Get Enrollments by Course Id",
+			"url": "https://school-api-production-e363.up.railway.app/api/enrollments/course/15",
+			"time": 1007,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains an array of all enrollments based on specific course ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains an array of all enrollments based on specific course ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1007
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains an array of all enrollments based on specific course ID": true
+				}
+			]
+		},
+		{
+			"id": "45e65dcb-b3a1-4dda-8917-6fe7960de463",
+			"name": "Delete Enrollment",
+			"url": "https://school-api-production-e363.up.railway.app/api/enrollments/17",
+			"time": 528,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				528
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4674,
+	"collection": {
+		"requests": [
+			{
+				"id": "e94d9ea2-3427-453c-91d2-5d08d4719301",
+				"method": "POST"
+			},
+			{
+				"id": "0081ee34-4836-4f0d-b7ce-3974bdc56c93",
+				"method": "GET"
+			},
+			{
+				"id": "48d096aa-2a08-4c31-973b-8ef262ec9add",
+				"method": "GET"
+			},
+			{
+				"id": "89f0eb1e-04be-4d72-968f-ed060575bfdf",
+				"method": "GET"
+			},
+			{
+				"id": "45e65dcb-b3a1-4dda-8917-6fe7960de463",
+				"method": "DELETE"
+			}
+		]
+	}
+}

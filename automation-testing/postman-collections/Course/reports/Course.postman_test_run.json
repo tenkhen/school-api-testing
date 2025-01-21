@@ -1,0 +1,201 @@
+{
+	"id": "55fc6b30-d8be-4038-af3b-72b25580c702",
+	"name": "Course",
+	"timestamp": "2025-01-21T00:50:43.907Z",
+	"collection_id": "28757998-45f708c6-753f-448a-9ed4-df11183e0d0d",
+	"folder_id": 0,
+	"environment_id": "28757998-08bd1d24-a914-4800-a339-a6c66ea57148",
+	"totalPass": 9,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-21T00:50:39.751Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "fed134a9-48a1-4b3e-8de2-5e12fd79eb84",
+			"name": "Create Course",
+			"url": "https://school-api-production-e363.up.railway.app/api/courses",
+			"time": 668,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response contains newly created course details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains newly created course details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				668
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response contains newly created course details": true
+				}
+			]
+		},
+		{
+			"id": "7fda54e4-80bc-4689-980f-7e37fbe311cc",
+			"name": "Get All Courses",
+			"url": "https://school-api-production-e363.up.railway.app/api/courses",
+			"time": 1348,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains an array of all courses": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains an array of all courses": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1348
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains an array of all courses": true
+				}
+			]
+		},
+		{
+			"id": "2ff0b434-9f51-4d20-9772-bca75543ea17",
+			"name": "Get a Course",
+			"url": "https://school-api-production-e363.up.railway.app/api/courses/25",
+			"time": 417,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains course details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains course details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				417
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains course details": true
+				}
+			]
+		},
+		{
+			"id": "715d5906-e6c6-4a9a-9352-70a21998f587",
+			"name": "Update Course",
+			"url": "https://school-api-production-e363.up.railway.app/api/courses/25",
+			"time": 894,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains updated course details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains updated course details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				894
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains updated course details": true
+				}
+			]
+		},
+		{
+			"id": "66cc4838-fe93-4d38-9b83-3778dc88a75f",
+			"name": "Delete Course",
+			"url": "https://school-api-production-e363.up.railway.app/api/courses/25",
+			"time": 551,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				551
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3878,
+	"collection": {
+		"requests": [
+			{
+				"id": "fed134a9-48a1-4b3e-8de2-5e12fd79eb84",
+				"method": "POST"
+			},
+			{
+				"id": "7fda54e4-80bc-4689-980f-7e37fbe311cc",
+				"method": "GET"
+			},
+			{
+				"id": "2ff0b434-9f51-4d20-9772-bca75543ea17",
+				"method": "GET"
+			},
+			{
+				"id": "715d5906-e6c6-4a9a-9352-70a21998f587",
+				"method": "PUT"
+			},
+			{
+				"id": "66cc4838-fe93-4d38-9b83-3778dc88a75f",
+				"method": "DELETE"
+			}
+		]
+	}
+}
